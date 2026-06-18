@@ -1,0 +1,79 @@
+---
+export interface Props {
+  slot?: string;
+  format?: 'auto' | 'rectangle' | 'banner';
+  position?: 'in-content' | 'sidebar' | 'footer';
+}
+
+const { format = 'auto', position = 'in-content' } = Astro.props;
+---
+
+<div class="ad-slot" data-ad-format={format} data-ad-position={position}>
+  <!-- 
+    AdSense 広告ユニット
+    本番運用時には以下のコメントアウトを解除し、
+    データ-ad-client と データ-ad-slot を実際の値に置き換えてください
+    
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format={format}
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  -->
+  <div class="ad-placeholder">
+    <span class="ad-label">広告</span>
+    <div class="ad-mock">
+      <p>AdSense 広告ユニット</p>
+      <p class="ad-hint">本番時に data-ad-client / data-ad-slot を設定</p>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .ad-slot {
+    margin: var(--space-xl) 0;
+    text-align: center;
+  }
+  .ad-placeholder {
+    border: 2px dashed var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--space-xl);
+    background: var(--color-bg-card);
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .ad-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    margin-bottom: var(--space-sm);
+  }
+  .ad-mock p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin: 0;
+  }
+  .ad-hint {
+    font-size: 0.65rem;
+    color: var(--color-border);
+    margin-top: var(--space-xs) !important;
+  }
+  .ad-slot[data-ad-position="sidebar"] {
+    margin: var(--space-md) 0;
+  }
+  .ad-slot[data-ad-format="rectangle"] .ad-placeholder {
+    width: 300px;
+    min-height: 250px;
+    margin: 0 auto;
+  }
+  .ad-slot[data-ad-format="banner"] .ad-placeholder {
+    width: 100%;
+    min-height: 60px;
+  }
+</style>

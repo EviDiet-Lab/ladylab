@@ -1,0 +1,55 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  buttonLabel?: string;
+  buttonHref?: string;
+  type?: 'newsletter' | 'download' | 'link';
+}
+
+const {
+  title = '無料メルマガ登録',
+  description = '最新のエビデンスに基づくダイエット情報を、毎週お届けします。',
+  buttonLabel = '登録する（無料）',
+  buttonHref = '#',
+  type = 'newsletter',
+} = Astro.props;
+---
+
+<div class={`cta-card ${type}`}>
+  <div class="cta-content">
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <a href={buttonHref} class="btn btn-primary cta-button" target="_blank" rel="noopener noreferrer">
+      {buttonLabel}
+    </a>
+  </div>
+</div>
+
+<style is:global>
+  .cta-card {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    margin: var(--space-2xl) 0;
+    text-align: center;
+  }
+  .cta-card.newsletter {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-bg));
+    border: 2px solid var(--color-secondary);
+  }
+  .cta-content h3 {
+    color: var(--color-text);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-sm);
+  }
+  .cta-content p {
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-lg);
+  }
+  .cta-button {
+    font-size: var(--font-size-base);
+    padding: 0.8rem 2rem;
+  }
+</style>

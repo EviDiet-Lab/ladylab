@@ -1,17 +1,121 @@
 ---
-// Welcome to Astro! https://docs.astro.build
-// Ladylab — EviDiet-Lab
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Ladylab</title>
-  </head>
-  <body>
-    <h1>Ladylab</h1>
-    <p>Welcome to Ladylab — by EviDiet-Lab.</p>
-  </body>
-</html>
+<BaseLayout title="LadyLab - エビデンスベースの女性のためのダイエットメディア" description="30代〜40代女性のための、エビデンス×トレンドに基づくダイエット情報メディア。最新の研究結果を基に、今日から実践できる方法をお届けします。">
+  <section class="hero section">
+    <div class="container hero-content">
+      <h1>無理なく、<br />続けられるダイエットを。</h1>
+      <p>最新のエビデンスとトレンドリサーチに基づいた、<br />あなたに寄り添うダイエット情報をお届けします。</p>
+      <a href="/ladylab/categories/diet" class="btn btn-primary">記事を読む</a>
+    </div>
+    <div class="hero-image">
+      <img src="https://picsum.photos/seed/ladylab-hero/800/500" alt="LadyLab" loading="eager" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>カテゴリから探す</h2>
+      <div class="category-grid">
+        <a href="/ladylab/categories/diet" class="card category-card">
+          <span class="category-icon">🥗</span>
+          <h3>ダイエット</h3>
+          <p>エビデンスに基づく効果的なダイエット方法</p>
+        </a>
+        <a href="/ladylab/categories/recipe" class="card category-card">
+          <span class="category-icon">🍳</span>
+          <h3>レシピ</h3>
+          <p>時短・簡単・美味しい健康レシピ</p>
+        </a>
+        <a href="/ladylab/categories/exercise" class="card category-card">
+          <span class="category-icon">🏃</span>
+          <h3>運動</h3>
+          <p>無理なく続けられるエクササイズ</p>
+        </a>
+        <a href="/ladylab/categories/sleep" class="card category-card">
+          <span class="category-icon">😴</span>
+          <h3>睡眠</h3>
+          <p>質の良い睡眠で痩せやすい体づくり</p>
+        </a>
+        <a href="/ladylab/categories/mental" class="card category-card">
+          <span class="category-icon">🧠</span>
+          <h3>メンタル</h3>
+          <p>ストレスフリーなダイエットをサポート</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-tint">
+    <div class="container">
+      <h2>最新の記事</h2>
+      <div class="article-list">
+        <article class="card article-card">
+          <img src="https://picsum.photos/seed/ladylab1/400/250" alt="記事イメージ" loading="lazy" />
+          <div class="article-card-body">
+            <span class="tag">ダイエット</span>
+            <h3>「ながらダイエット」が話題！通勤・家事で燃焼量を増やす方法</h3>
+            <p class="article-date">2025-06-18</p>
+            <a href="/ladylab/posts/while-diet" class="btn btn-outline">続きを読む</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  .hero {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-bg) 100%);
+  }
+  .hero-content { flex: 1; }
+  .hero-content h1 { font-size: var(--font-size-3xl); }
+  .hero-image { flex: 1; }
+  .hero-image img { border-radius: var(--border-radius-lg); width: 100%; }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-md);
+  }
+  .category-card {
+    text-decoration: none;
+    color: var(--color-text);
+    transition: transform 0.2s;
+  }
+  .category-card:hover {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+  .category-icon { font-size: 2rem; display: block; margin-bottom: var(--space-sm); }
+  .category-card h3 { font-size: var(--font-size-lg); margin-top: 0; }
+  .category-card p { font-size: var(--font-size-sm); color: var(--color-text-light); }
+
+  .bg-tint { background: rgba(232,213,183,0.2); }
+
+  .article-list { display: flex; flex-direction: column; gap: var(--space-lg); }
+  .article-card {
+    display: flex;
+    gap: var(--space-lg);
+    overflow: hidden;
+  }
+  .article-card img {
+    width: 280px;
+    min-height: 180px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .article-card-body { flex: 1; }
+  .article-date { font-size: var(--font-size-sm); color: var(--color-text-light); }
+
+  @media (max-width: 640px) {
+    .hero { flex-direction: column; }
+    .article-card { flex-direction: column; }
+    .article-card img { width: 100%; }
+    .category-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

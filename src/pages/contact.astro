@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="お問い合わせ" description="LadyLabへのお問い合わせはこちらから受け付けています。">
+  <article class="container section">
+    <h1>お問い合わせ</h1>
+    <p>記事のご提案、広告掲載のご相談、その他お問い合わせは以下のフォームからお願いいたします。</p>
+    <p>※現在、お問い合わせフォームは準備中です。大変お手数ですが、各リポジトリのIssueまたはPull Requestにてご連絡ください。</p>
+
+    <div class="card contact-card">
+      <h2>連絡先</h2>
+      <ul>
+        <li>GitHub: <a href="https://github.com/EviDiet-Lab" target="_blank" rel="noopener noreferrer">EviDiet-Lab Organization</a></li>
+        <li>記事のご提案: 各リポジトリの Issue を作成してください</li>
+      </ul>
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .contact-card { margin-top: var(--space-xl); }
+</style>

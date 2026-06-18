@@ -1,0 +1,92 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  category: string;
+  slug: string;
+  image?: string;
+  tags?: string[];
+}
+
+const { title, description, pubDate, category, slug, image, tags } = Astro.props;
+const basePath = "/ladylab";
+---
+
+<article class="card article-card">
+  <a href={`${basePath}/posts/${slug}`} class="article-card-link">
+    {image && (
+      <div class="article-image">
+        <img src={image} alt={title} loading="lazy" />
+      </div>
+    )}
+    <div class="article-card-body">
+      <span class="tag">{category}</span>
+      <h3>{title}</h3>
+      <p class="article-description">{description}</p>
+      <div class="article-meta">
+        <time datetime={pubDate.toISOString()}>
+          {pubDate.toLocaleDateString("ja-JP", { year: "numeric", month: "long", day: "numeric" })}
+        </time>
+        {tags && tags.length > 0 && (
+          <div class="article-tags">
+            {tags.slice(0, 3).map(tag => <span class="tag-sm">{tag}</span>)}
+          </div>
+        )}
+      </div>
+    </div>
+  </a>
+</article>
+
+<style is:global>
+  .article-card { overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+  .article-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .article-card-link {
+    display: flex;
+    gap: var(--space-lg);
+    text-decoration: none;
+    color: var(--color-text);
+  }
+  .article-card-link:hover { opacity: 1; }
+  .article-image {
+    width: 280px;
+    min-height: 180px;
+    flex-shrink: 0;
+  }
+  .article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .article-card-body { flex: 1; padding: var(--space-md) 0; }
+  .article-card-body h3 {
+    font-size: var(--font-size-lg);
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+  .article-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin-bottom: var(--space-sm);
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+  }
+  .tag-sm {
+    display: inline-block;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.65rem;
+    border-radius: 3px;
+    background: var(--color-border);
+    color: var(--color-text-light);
+    margin-right: 0.25rem;
+  }
+  @media (max-width: 640px) {
+    .article-card-link { flex-direction: column; }
+    .article-image { width: 100%; min-height: 200px; }
+  }
+</style>

@@ -1,0 +1,167 @@
+/* ========================================
+   LadyLab デザインシステム
+   ターゲット: 30代〜40代働く女性
+   トーン: 優しく寄り添う、温かみ
+   ======================================== */
+
+:root {
+  /* ---- カラーテーマ ---- */
+  --color-primary: #E8D5B7;       /* ベージュ */
+  --color-secondary: #F5A0A0;     /* ピンク */
+  --color-text: #4A4A4A;          /* ダークグレー */
+  --color-text-light: #7a7a7a;
+  --color-bg: #fdfaf7;            /* 暖かみのある白 */
+  --color-bg-card: #ffffff;
+  --color-accent: #c9a96e;        /* ゴールドアクセント */
+  --color-border: #e8ddd0;
+
+  /* ---- タイポグラフィ ---- */
+  --font-heading: 'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  --font-body: 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.375rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2.25rem;
+
+  /* ---- スペーシング ---- */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* ---- レイアウト ---- */
+  --max-width: 720px;
+  --max-width-wide: 960px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+
+  /* ---- シャドウ ---- */
+  --shadow-sm: 0 1px 3px rgba(74,74,74,0.08);
+  --shadow-md: 0 4px 12px rgba(74,74,74,0.1);
+  --shadow-lg: 0 8px 24px rgba(74,74,74,0.12);
+}
+
+/* ---- グローバルリセット＆ベース ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: 1.9;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--font-size-3xl); margin-bottom: var(--space-lg); }
+h2 { font-size: var(--font-size-2xl); margin-bottom: var(--space-md); margin-top: var(--space-2xl); }
+h3 { font-size: var(--font-size-xl); margin-bottom: var(--space-sm); margin-top: var(--space-xl); }
+
+p { margin-bottom: var(--space-md); }
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+a:hover { opacity: 0.7; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+ul, ol { padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+li { margin-bottom: var(--space-xs); }
+
+/* ---- ボタン ---- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--border-radius);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary {
+  background: var(--color-secondary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #e88a8a;
+  opacity: 1;
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+/* ---- カード ---- */
+.card {
+  background: var(--color-bg-card);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+/* ---- コンテナ ---- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+.container-wide {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* ---- セクション ---- */
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+/* ---- タグ ---- */
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: var(--font-size-xs);
+  border-radius: 4px;
+  background: var(--color-primary);
+  color: var(--color-text);
+  margin-right: var(--space-xs);
+}
+
+/* ---- レスポンシブ ---- */
+@media (max-width: 640px) {
+  html { font-size: 15px; }
+  h1 { font-size: var(--font-size-2xl); }
+  h2 { font-size: var(--font-size-xl); }
+  .section { padding: var(--space-2xl) 0; }
+}

@@ -1,0 +1,86 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container-wide footer-grid">
+    <div class="footer-brand">
+      <h3>🌸 LadyLab</h3>
+      <p>30代〜40代女性のための、エビデンスベースのダイエットメディア</p>
+    </div>
+    <div class="footer-links">
+      <h4>カテゴリ</h4>
+      <ul>
+        <li><a href="/ladylab/categories/diet">ダイエット</a></li>
+        <li><a href="/ladylab/categories/recipe">レシピ</a></li>
+        <li><a href="/ladylab/categories/exercise">運動</a></li>
+        <li><a href="/ladylab/categories/sleep">睡眠</a></li>
+        <li><a href="/ladylab/categories/mental">メンタル</a></li>
+      </ul>
+    </div>
+    <div class="footer-info">
+      <h4>インフォメーション</h4>
+      <ul>
+        <li><a href="/ladylab/about">サイトについて</a></li>
+        <li><a href="/ladylab/contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; {currentYear} EviDiet-Lab / LadyLab. All rights reserved.</p>
+  </div>
+</footer>
+
+<style is:global>
+  .site-footer {
+    background: var(--color-primary);
+    margin-top: var(--space-3xl);
+    padding: var(--space-2xl) 0 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+  .site-footer h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-sm);
+    margin-top: 0;
+  }
+  .site-footer h4 {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-sm);
+    margin-top: 0;
+  }
+  .site-footer p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+  }
+  .site-footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  .site-footer ul li {
+    margin-bottom: var(--space-xs);
+  }
+  .site-footer ul a {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+  }
+  .footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-md) 0;
+    text-align: center;
+  }
+  .footer-bottom p {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    margin: 0;
+  }
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

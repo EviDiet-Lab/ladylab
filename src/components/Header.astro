@@ -1,0 +1,118 @@
+---
+// LadyLab Header
+const siteTitle = "LadyLab";
+const navItems = [
+  { label: "ホーム", href: "/ladylab/" },
+  { label: "ダイエット", href: "/ladylab/categories/diet" },
+  { label: "レシピ", href: "/ladylab/categories/recipe" },
+  { label: "運動", href: "/ladylab/categories/exercise" },
+  { label: "睡眠", href: "/ladylab/categories/sleep" },
+  { label: "メンタル", href: "/ladylab/categories/mental" },
+  { label: "お問い合わせ", href: "/ladylab/contact" },
+];
+---
+
+<header class="site-header">
+  <div class="container-wide header-inner">
+    <a href="/ladylab/" class="site-logo">
+      <span class="logo-icon">🌸</span>
+      <span class="logo-text">{siteTitle}</span>
+    </a>
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="nav-hamburger">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-list">
+        {navItems.map(item => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style is:global>
+  .site-header {
+    background: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.95);
+  }
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-md);
+  }
+  .site-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .site-logo:hover { opacity: 1; }
+  .logo-icon { font-size: 1.5rem; }
+  .nav-list {
+    display: flex;
+    gap: var(--space-sm);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-list a {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    border-radius: var(--border-radius);
+    transition: background 0.2s;
+    font-family: var(--font-body);
+  }
+  .nav-list a:hover {
+    background: var(--color-primary);
+    opacity: 1;
+  }
+  .nav-toggle { display: none; }
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: var(--space-sm);
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: 0.2s;
+  }
+  @media (max-width: 768px) {
+    .nav-list {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--color-bg-card);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-md);
+    }
+    .nav-toggle:checked ~ .nav-list {
+      display: flex;
+    }
+    .nav-hamburger {
+      display: flex;
+    }
+  }
+</style>
